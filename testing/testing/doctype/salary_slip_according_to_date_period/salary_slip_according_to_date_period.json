@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:employee",
+ "creation": "2024-04-25 12:25:35.277475",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_section_section",
+  "employee",
+  "period_section_section",
+  "from_date",
+  "column_break_8pp8l",
+  "to_date",
+  "salary_section_section",
+  "amount_to_paid",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee_section_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Section"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "unique": 1
+  },
+  {
+   "fieldname": "period_section_section",
+   "fieldtype": "Section Break",
+   "label": "Period Section"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "column_break_8pp8l",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date"
+  },
+  {
+   "fieldname": "salary_section_section",
+   "fieldtype": "Section Break",
+   "label": "Salary Section"
+  },
+  {
+   "fieldname": "amount_to_paid",
+   "fieldtype": "Currency",
+   "label": "Amount to Paid"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Salary Slip According To Date period",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-04-25 12:51:36.970074",
+ "modified_by": "Administrator",
+ "module": "Testing",
+ "name": "Salary Slip According To Date period",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
