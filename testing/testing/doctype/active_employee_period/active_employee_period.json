@@ -1,0 +1,78 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-08 16:00:03.224989",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "filter_section",
+  "from_date",
+  "column_break_ktmkq",
+  "to_date",
+  "employee_details_section",
+  "fetch_detail",
+  "employee_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "filter_section",
+   "fieldtype": "Section Break",
+   "label": "Filter"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From_date"
+  },
+  {
+   "fieldname": "column_break_ktmkq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To_date"
+  },
+  {
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "fetch_detail",
+   "fieldtype": "Button",
+   "label": "Fetch Detail"
+  },
+  {
+   "fieldname": "employee_table",
+   "fieldtype": "Table",
+   "label": "Employee Table",
+   "options": "Employee Active Period Table"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-05-08 16:00:03.224989",
+ "modified_by": "Administrator",
+ "module": "Testing",
+ "name": "Active Employee Period",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
