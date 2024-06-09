@@ -1,5 +1,5 @@
 frappe.listview_settings["Salary Slip According To Date period"] = {
-	add_fields: ["from_date", "to_date", "amount_to_be_paid"],
+	add_fields: ["from_date", "to_date", "amount_to_paid"],
 
 	get_indicator: function (doc) {
 		if (["Present", "Work From Home"].includes(doc.status)) {

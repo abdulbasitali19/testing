@@ -27,7 +27,7 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Payment Entry" : "public/js/payment_entry.js"}
+# doctype_js = {"Payment Entry" : "public/js/payment_entry.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_list_js = {"attendance" : "public/js/attendance_list.js"}
 
@@ -102,7 +102,7 @@ doctype_js = {"Payment Entry" : "public/js/payment_entry.js"}
 # 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 #
-# has_permission = {
+# has_permission = {    
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
@@ -110,9 +110,10 @@ doctype_js = {"Payment Entry" : "public/js/payment_entry.js"}
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+# 	"ToDo": "custom_app.overrides.CustomToDo",
+override_doctype_class = {
+    "Payment Entry" : "testing.overrides.custom_payment_entry.CustomPaymentEntry",
+}
 
 # Document Events
 # ---------------
