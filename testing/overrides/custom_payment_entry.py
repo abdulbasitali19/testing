@@ -1,37 +1,69 @@
 import frappe
 from erpnext.accounts.doctype.payment_entry.payment_entry import PaymentEntry
 
-
 class CustomPaymentEntry(PaymentEntry):
     def validate(self):
         self.update_supplier_numbers() 
-        
- 
+
     def getting_supplier_number(self):
-        spno = {}
-        for i in self.references:
-            if i.get("reference_doctype") == 'Journal Entry':
-                reference_name = i.get("reference_name")
-                supplier_data = frappe.db.get_all("Journal Entry Account", filters={
-                    "parenttype": i.get("reference_doctype"),
-                    "parent": reference_name,
-                    "docstatus": 1,
-                    "party_type": "Supplier"
-                }, fields=["custom_supplier_number"])
-                # Assuming there's only one supplier number per reference
-                if supplier_data:
-                    spno[reference_name] = supplier_data[0].get("custom_supplier_number")
+        query = """
+            SELECT 
+                jea.custom_supplier_number,
+                je.name
+            FROM                
+                `tabJournal Entry Account` jea
+            INNER JOIN 
+                `tabJournal Entry` je ON je.name = jea.parent
+            WHERE
+                jea.party_type = 'Supplier'
+                AND je.docstatus = 1
+        """
+        spno = frappe.db.sql(query, as_dict=1)
         return spno
-    
+
+
+
     def update_supplier_numbers(self):
-        spno = self.getting_supplier_number()  # Call validate_supplier_number
+        spno = self.getting_supplier_number()
+        spno_dict = {item['name']: item['custom_supplier_number'] for item in spno}
+        
+        # Create a list of existing reference names for quick lookup
+        existing_reference_names = {reference.get("reference_name"): reference for reference in self.references}
+
+        for name, custom_supplier_number in spno_dict.items():
+            if name in existing_reference_names:
+                self.reference = []
+                reference = existing_reference_names[name]
+                self.append("references", {
+                    "reference_doctype": reference.get("reference_doctype"),
+                    "reference_name": name,
+                    "total_amount": reference.get("total_amount"),
+                    "outstanding_amount": reference.get("outstanding_amout"),
+                    "allocated_amount": reference.get("allocated_amount"),
+                    "custom_supplier_number": custom_supplier_number
+                })
+
+        return None
+
+
+    def update_supplier_numbers(self):
+        spno = self.getting_supplier_number()
+        spno_dict = {item['name']: item['custom_supplier_number'] for item in spno}
         for reference in self.references:
             if reference.get("reference_doctype") == 'Journal Entry':
+                reference_doctype = reference.get("reference_doctype")
                 reference_name = reference.get("reference_name")
-            # Check for existence in spno and update if found
-            if reference_name in spno:
-                self.append("references",{"custom_supplier_number":spno[reference_name]}) 
-        return None  # This function doesn't need to return anything
+                total_amount = reference.get("total_amount")
+                outstanding_amout = reference.get("outstanding_amout")
+                allocated_amount = reference.get("allocated_amount")
+                if reference_name in spno_dict:
+                    self.append("references",{
+                        "reference_doctype":reference_doctype,
+                        "reference_name":reference_name,
+                        "total_amount":total_amount,
+                        "outstanding_amount":outstanding_amout,
+                        "allocated_amount":allocated_amount,
+                        "custom_supplier_number": spno_dict[reference_name]})
+                    
+        return None
 
-            
-        

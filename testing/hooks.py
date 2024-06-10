@@ -27,7 +27,7 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"Payment Entry" : "public/js/payment_entry.js"}
+doctype_js = {"Payment Entry" : "public/js/payment_entry.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_list_js = {"attendance" : "public/js/attendance_list.js"}
 
@@ -111,9 +111,9 @@ app_license = "MIT"
 # Override standard doctype classes
 
 # 	"ToDo": "custom_app.overrides.CustomToDo",
-override_doctype_class = {
-    "Payment Entry" : "testing.overrides.custom_payment_entry.CustomPaymentEntry",
-}
+# override_doctype_class = {
+#     "Payment Entry" : "testing.overrides.custom_payment_entry.CustomPaymentEntry",
+# }
 
 # Document Events
 # ---------------
